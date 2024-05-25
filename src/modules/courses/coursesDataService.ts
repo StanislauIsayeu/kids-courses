@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_URL_BASE } from "../../config/config";
-import { ICourse } from "./models";
+import { ICourse } from "./interfaces";
 
 const GET_COURSES_URL = `${API_URL_BASE}/docs/courses.json`;
 

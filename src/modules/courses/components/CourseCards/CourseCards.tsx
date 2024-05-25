@@ -1,7 +1,7 @@
 import { useContext, useMemo } from "react";
 import { CoursesContext } from "../../CoursesContext";
-import { ICourse } from "../../models";
-import { filterCoursesByTag } from "../../courses.utils";
+import { ICourse } from "../../interfaces";
+import { filterCoursesByTag } from "../../utils/courses.utils";
 import CourseCard from "./CourseCard";
 import styles from './courseCards.module.scss';
 import clsx from "clsx";

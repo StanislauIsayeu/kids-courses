@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { ICourseContext } from "./models";
+import { ICourseContext } from "./interfaces";
 import { ReactNode } from 'react'
 import { COURSES_DEFAULT_TAG } from "./courses.constants";
 

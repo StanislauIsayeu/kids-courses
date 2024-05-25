@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { fetchCourses } from "./coursesDataService";
-import { ICourse } from "./models";
+import { ICourse } from "./interfaces";
 import CoursesNavbar from "./components/CoursesNavbar/CoursesNavbar";
-import { getCoursesTags } from "./courses.utils";
+import { getCoursesTags } from "./utils/courses.utils";
 import { CoursesContextProvider } from "./CoursesContext";
 import CourseCards from "./components/CourseCards/CourseCards";
 import clsx from "clsx";

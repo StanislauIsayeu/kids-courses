@@ -1,4 +1,4 @@
-import { ICourse } from "./models";
+import { ICourse } from "../interfaces";
 
 export function getCoursesTags(courses: ICourse[]): string[] {
     var tagsSet = courses.reduce((acc, course) => {
