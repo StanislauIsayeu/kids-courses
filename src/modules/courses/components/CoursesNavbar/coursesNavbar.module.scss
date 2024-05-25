@@ -1,0 +1,14 @@
+@import '../../../../commonStyles/colors.scss';
+
+.navbarContainer {
+    display: flex;
+    flex-flow: column;
+    flex: 0 0;
+    flex-basis: 264px;
+    box-sizing: border-box;
+    padding: 12px;
+    margin: 24px 0 0 24px;
+    border: 1px solid $border;
+    border-radius: 18px;
+    align-self: flex-start;
+}

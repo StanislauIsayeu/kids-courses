@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { fetchCourses } from "./coursesDataService";
 import { ICourse } from "./models";
 import CoursesNavbar from "./components/CoursesNavbar/CoursesNavbar";
@@ -10,7 +10,7 @@ import styles from './courses.module.scss';
 
 export default function Courses() {
     const [courses, setCourses] = useState<ICourse[]>([]);
-    const tags = getCoursesTags(courses);
+    const tags = useMemo(() => getCoursesTags(courses), [courses]);
 
     useEffect(() => {
         fetchCourses().then((courses: ICourse[]) => {
@@ -19,11 +19,11 @@ export default function Courses() {
     }, []);
 
     return (
-        <CoursesContextProvider>
-            <div className={clsx(styles.courses)}>
+        <div className={clsx(styles.courses)}>
+            <CoursesContextProvider>
                 <CoursesNavbar tags={tags} />
                 <CourseCards courses={courses} />
-            </div>
-        </CoursesContextProvider>
+            </CoursesContextProvider>
+        </div>
     );
 }

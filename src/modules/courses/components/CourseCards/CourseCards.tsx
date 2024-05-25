@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { CoursesContext } from "../../CoursesContext";
 import { ICourse } from "../../models";
 import { filterCoursesByTag } from "../../courses.utils";
 import CourseCard from "./CourseCard";
+import styles from './courseCards.module.scss';
+import clsx from "clsx";
 
 interface ICourseCardsProps {
     courses: ICourse[];
@@ -10,15 +12,19 @@ interface ICourseCardsProps {
 
 export default function CourseCards({ courses }: ICourseCardsProps) {
     const { selectedTag } = useContext(CoursesContext);
-    const filteredCourses = filterCoursesByTag(courses, selectedTag);
+    const filteredCourses = useMemo(
+        () => filterCoursesByTag(courses, selectedTag),
+        [courses, selectedTag]
+    );
 
     return (
-        <div style={{ 'display': 'grid', 'gridTemplateColumns': 'auto auto auto', 'width': '100%', 'gap': '18px' }}>
+        <div className={clsx(styles.courseCardsContainer)}>
             {filteredCourses.map(course => <CourseCard
                 image={course.image}
                 imageColor={course.bgColor}
                 name={course.name}
-                key={course.id} />)}
+                key={course.id} />
+            )}
         </div>
     );
-}
+};
