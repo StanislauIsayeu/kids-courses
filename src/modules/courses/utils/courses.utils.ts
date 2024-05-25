@@ -1,13 +1,13 @@
 import { ICourse } from "../interfaces";
 
-export function getCoursesTags(courses: ICourse[]): string[] {
-    var tagsSet = courses.reduce((acc, course) => {
-        var courseSet = new Set<string>(course.tags);
+export function getUniqueCourseTags(courses: ICourse[]): string[] {
+    var tags = courses.reduce<string[]>((acc, course) => {
+        acc.push(...course.tags);
 
-        return new Set<string>([...acc, ...courseSet]);
-    }, new Set<string>());
+        return acc;
+    }, []);
 
-    return Array.from(tagsSet);
+    return [...new Set<string>(tags)];
 }
 
 export function filterCoursesByTag(courses: ICourse[], tag: string) {
